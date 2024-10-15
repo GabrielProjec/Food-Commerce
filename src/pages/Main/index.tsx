@@ -1,4 +1,7 @@
+import { Outlet } from 'react-router-dom'
 import { Container } from './styles'
+
+import { ReactComponent as LogoImg } from '../../assets/logo.svg'
 
 import { Sidebar } from '../../components/Sidebar'
 
@@ -6,8 +9,10 @@ export default function Main() {
   return (
     <Container>
       <Sidebar />
-
-      <h1>Main</h1>
+      <section>
+        <LogoImg />
+        <Outlet />
+      </section>
     </Container>
   )
 }
