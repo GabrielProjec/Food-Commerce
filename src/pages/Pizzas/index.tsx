@@ -1,9 +1,12 @@
+import Header from "../../components/Header"
+import SnackTitle from "../../components/SnackTitle"
 
 function Pizzas(){
     return (
         <div>
-            <h1>Pizzas</h1>
-        </div>
+        <Header title="Pizzas" description="Nossos Melhores Pizzas" />
+        <SnackTitle>Pizzas</SnackTitle>
+    </div>
     )
 }
 

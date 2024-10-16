@@ -25,8 +25,6 @@ export const Container = styled.aside<ContainerProps>`
 
   transition: width 0.3s;
 
- 
-
   button {
     background: none;
     width: 100%;
@@ -100,38 +98,40 @@ export const Container = styled.aside<ContainerProps>`
 
   @media (max-width: 720px) {
     position: fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index:999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
 
     width: 100%;
-    height:5rem;
+    height: 5rem;
     overflow-y: auto;
     padding: 0 0;
 
     button {
       display: none;
     }
+
     nav {
       height: 100%;
 
       ul {
         flex-direction: row;
-        align-items: center
+        align-items: center;
       }
 
       li {
         a {
-          flex-direction:column;
+          flex-direction: column;
           padding: 0rem;
 
           svg {
             width: 3.25rem;
             height: 3.25rem;
           }
+
           span {
-            display: none
+            display: none;
           }
 
           &.active {
@@ -142,8 +142,5 @@ export const Container = styled.aside<ContainerProps>`
         }
       }
     }
-
   }
-
- 
 `

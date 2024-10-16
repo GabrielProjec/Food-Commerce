@@ -10,7 +10,7 @@ export default function Main() {
     <Container>
       <Sidebar />
       <section>
-        <LogoImg />
+        <LogoImg style={{width: '12rem'}} />
         <Outlet />
       </section>
     </Container>
