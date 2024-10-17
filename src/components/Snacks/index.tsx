@@ -2,9 +2,10 @@ import { Container } from "./styles"
 import {FiPlus} from 'react-icons/fi'
 import { currentFormat } from "../../helpers/currentFormat"
 import SkeletonSnacks from "../SkeletonSnacks"
+import { SnackData } from "../../interfaces/SnackData"
 
 interface SnacksProps {
-    snacks: any[]
+    snacks: SnackData[]
 }
 
 function Snacks({ snacks }: SnacksProps) {
