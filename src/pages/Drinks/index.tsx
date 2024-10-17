@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
 import Header from "../../components/Header"
 import Snacks from "../../components/Snacks"
 import SnackTitle from "../../components/SnackTitle"
-import { getDrinks } from "../../services/api"
-import { SnackData } from "../../interfaces/SnackData"
+import { SnackContext } from "../../App"
 
 function Drinks(){
+  const {drinks} = useContext(SnackContext)
 
-  const [drinks, setDrinks] = useState<SnackData[]>([])
-
-  useEffect(() => {
-    (async () => {
-      const drinksRequest = await getDrinks()
-
-      setDrinks(drinksRequest.data)
-    })()
-  },[])
 
   
       return (

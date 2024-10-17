@@ -1,29 +1,15 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 
 import Header from "../../components/Header"
 import Snacks from "../../components/Snacks"
 import SnackTitle from "../../components/SnackTitle"
-import { getBurgers } from "../../services/api"
-import { SnackData } from "../../interfaces/SnackData"
+import { SnackContext } from "../../App"
+
 
 
 function Burgers(){
-  const [burgers, setBurgers] = useState
-  <SnackData[]>([])
+   const {burgers} = useContext(SnackContext)
 
-  useEffect(() => {
-    (async () => {
-      const burgerRequest = await getBurgers()
-
-    setBurgers(burgerRequest.data)
-    })()
-  },[])
-
-
-
-    
-
-      
     return (
         <div>
             <Header title="Hamburguers" description="Nossos Melhores Hamburgueres" />
