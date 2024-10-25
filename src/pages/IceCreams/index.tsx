@@ -1,11 +1,11 @@
-import { useContext} from "react"
+
 import Header from "../../components/Header"
 import Snacks from "../../components/Snacks"
 import SnackTitle from "../../components/SnackTitle"
-import { SnackContext } from "../../context/SnackContext"
+import { useSnack } from "../../hooks/useSnacks"
 
 function IceCreams(){
-  const {iceCreams} = useContext(SnackContext)
+  const {iceCreams} = useSnack()
 
 
       return (
