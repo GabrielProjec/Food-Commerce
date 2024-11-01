@@ -20,8 +20,8 @@ interface RemoveSnackFromCartProps {
 interface CartContextProps {
     cart: Snack[]
     addSnackIntoCart: (snack: SnackData) => void;
-   // updateCart: ({id, snack , newQuantity}: UpdateCartProps) => void;
-   // removeSnackFromCart: ({id, snack}: RemoveSnackFromCartProps ) => void
+    // updateCart: ({id, snack , newQuantity}: UpdateCartProps) => void;
+    // removeSnackFromCart: ({id, snack}: RemoveSnackFromCartProps ) => void
 }
 
 interface CartProviderProps {
@@ -30,19 +30,41 @@ interface CartProviderProps {
 
 export const CartContext = createContext({} as CartContextProps)
 
-export function CartProvider({children}: CartProviderProps){
-   const [cart, setCart] = useState<Snack[]>([])
+export function CartProvider({ children }: CartProviderProps) {
+    const [cart, setCart] = useState<Snack[]>([])
 
-   function addSnackIntoCart(snack: SnackData): void {
-    const newSnack = {...snack, quantity: 1, subtotal: snack.price}
-    const newCart = [...cart, newSnack]
-    setCart(newCart)
-   }
+    function addSnackIntoCart(snack: SnackData): void {
+        //buscar
+        const snackExistentInCart = cart.find((item) => item.snack === snack.snack && item.id === snack.id)
+
+        // atualizar
+        if (snackExistentInCart) {
+            const newCart = cart.map((item) => {
+                if (item.id === snack.id) {
+                    const quantity = item.quantity + 1
+                    const subtotal = item.price * quantity
+
+                    return { ...item, quantity, subtotal }
+                }
+                return item
+            })
+            console.log('newCart atualização', newCart)
+            setCart(newCart)
+            return
+        }
+
+        // adiciona
+        const newSnack = { ...snack, quantity: 1, subtotal: snack.price }
+        const newCart = [...cart, newSnack]
+
+        console.log('newCart adição', newCart)
+        setCart(newCart)
+    }
 
 
-   return (
-    <CartContext.Provider value={{cart, addSnackIntoCart}}>
-        {children}
-    </CartContext.Provider>
-   )
+    return (
+        <CartContext.Provider value={{ cart, addSnackIntoCart }}>
+            {children}
+        </CartContext.Provider>
+    )
 }
