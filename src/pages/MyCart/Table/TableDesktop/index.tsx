@@ -5,6 +5,7 @@ import {FaTrashAlt} from 'react-icons/fa'
 
 import plusImg from '../../../../assets/circle-plus.svg'
 import minusImg from '../../../../assets/circle-minus.svg'
+import { ConfirmOrder } from "../../../../components/ConfirmOrder"
 
 export function TableDesktop() {
     const {cart, removeSnackFromCart, snackCartDecrement, snackCartIncrement} = useCart()
@@ -59,6 +60,7 @@ export function TableDesktop() {
                     }
                 </tbody>
             </table>
+            <ConfirmOrder />
         </Container>
     )
 }
