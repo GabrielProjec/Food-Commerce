@@ -1,9 +1,13 @@
 import { currentFormat } from "../../../../helpers/currentFormat"
 import { useCart } from "../../../../hooks/useCart"
 import { Container } from "./styles"
+import {FaTrashAlt} from 'react-icons/fa'
+
+import plusImg from '../../../../assets/circle-plus.svg'
+import minusImg from '../../../../assets/circle-minus.svg'
 
 export function TableDesktop() {
-    const {cart} = useCart()
+    const {cart, removeSnackFromCart, snackCartDecrement, snackCartIncrement} = useCart()
 
     return (
         <Container>
@@ -29,13 +33,26 @@ export function TableDesktop() {
                                     <span>{currentFormat(item.price)}</span>
                                 </td>
                                 <td>
-                                    {item.quantity}
+                                    <div>
+                                        <button type="button" onClick={() => snackCartDecrement(item)}>
+                                            <img src={minusImg} alt="button de diminuir" />
+                                        </button>
+                                    <span>
+
+                                    {`${item.quantity}`.padStart(2 , '0')}
+                                    </span>
+                                    <button type="button" onClick={() => snackCartIncrement(item)}>
+                                            <img src={plusImg} alt="button de diminuir" />
+                                        </button>
+                                    </div>
                                 </td>
                                 <td>
                                     <h5>{currentFormat(item.subtotal)}</h5>
                                 </td>
                                 <td>
-                                    Deletar
+                                    <button onClick={() => removeSnackFromCart(item)}>
+                                    <FaTrashAlt />
+                                    </button>
                                 </td>
                             </tr>
                         ))
