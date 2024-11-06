@@ -126,27 +126,27 @@ export default function Payment() {
                         />
                     </div>
                     <div className="grouped">
-                    <div className="field">
-                        <label htmlFor="credit-card-expiration">Validade (MM/AA)</label>
-                        <input
-                            type="text"
-                            id="credit-card-expiration"
-                            name="credit-card-expiration"
-                            autoComplete="cc-exp"
-                        />
+                        <div className="field">
+                            <label htmlFor="credit-card-expiration">Validade (MM/AA)</label>
+                            <input
+                                type="text"
+                                id="credit-card-expiration"
+                                name="credit-card-expiration"
+                                autoComplete="cc-exp"
+                            />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="credit-card-code">Código de segurança (CVV)</label>
+                            <input
+                                type="text"
+                                id="credit-card-code"
+                                name="credit-card-code"
+                                autoComplete="cc-csc"
+                            />
+                        </div>
                     </div>
-                    <div className="field">
-                        <label htmlFor="credit-card-code">Código de segurança (CVV)</label>
-                        <input
-                            type="text"
-                            id="credit-card-code"
-                            name="credit-card-code"
-                            autoComplete="cc-csc"
-                        />
-                    </div>
-                    </div>
+                    <PayOrder />
                 </Form>
-                <PayOrder />
             </Inner>
         </Container>
     )
