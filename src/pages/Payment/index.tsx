@@ -2,29 +2,41 @@ import Header from "../../components/Header"
 import { PayOrder } from "../../components/OrderCloseAction/PayOrder"
 import { OrderHeader } from "../../components/OrderHeader"
 import { Container, Inner, Form } from "./styles"
+import {useForm, SubmitHandler} from 'react-hook-form'
+
+type FieldValues = {
+    fullName: string
+    email: string
+    mobile: string
+}
 
 export default function Payment() {
+    const {register, handleSubmit, formState: {errors}} = useForm<FieldValues>()
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data)
+
     return (
         <Container>
             <Header title="Pagamento" />
             <OrderHeader />
             <Inner>
-                <Form>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <h4>Informações Pessoais</h4>
 
                     <div className="field">
-                        <label htmlFor="full-name">Nome e sobrenome</label>
-                        <input type="text" id="full-name" name="full-name" autoComplete="name" />
+                        <label htmlFor="fullName">Nome e sobrenome</label>
+                        <input type="text" id="fullName" autoComplete="name" {...register('fullName', {required: true})}/>
+                        {errors.fullName && <p className="error">Campo obrigatório</p>}
                     </div>
                     <div className="grouped">
                         <div className="field">
                             <label htmlFor="email">E-mail</label>
-                            <input type="email" id="email" name="email" autoComplete="email" />
+                            <input type="email" id="email"  autoComplete="email"  {...register('email', {required: true})}/>
                         </div>
 
                         <div className="field">
                             <label htmlFor="mobile">Celular</label>
-                            <input type="tel" id="mobile" name="mobile" autoComplete="phone" />
+                            <input type="tel" id="mobile"  autoComplete="phone" {...register('mobile', {required: true})} />
                         </div>
 
                         <div className="field">
